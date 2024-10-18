@@ -1,0 +1,32 @@
+[
+    {
+    "id": "1",
+    "name": "Nikki",
+    "coins": "9",
+    "timestamp": "2024-10-16 13:28:02"
+    },
+    {
+    "id": "2",
+    "name": "Nina",
+    "coins": "1",
+    "timestamp": "2024-10-14 20:48:57"
+    },
+    {
+    "id": "3",
+    "name": "Heike",
+    "coins": "2",
+    "timestamp": "2024-10-14 21:18:45"
+    },
+    {
+    "id": "4",
+    "name": "Renate",
+    "coins": "1",
+    "timestamp": "2024-10-14 20:49:15"
+    },
+    {
+    "id": "5",
+    "name": "Sigi",
+    "coins": "8",
+    "timestamp": "2024-10-16 13:22:48"
+    }
+    ]

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="shortcut icon" href="https://c.s-microsoft.com/favicon.ico?v2" />
+    <title>Ride4Coins</title>
+  </head>
+  <style>
+    @font-face {
+    font-family: "finurlig";
+    /* src: url(assets/CuteEaster.ttf) format("truetype"); */
+    src: url(assets/finurlig.otf) format("opentype");
+}
+    html{
+      font-family: finurlig;
+      /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+    }
+    h1{
+      font-size: 3em;
+    }
+
+    table{
+      border-style: solid;
+      border-collapse: collapse;
+      font-size: 2em;
+      font-weight: 500;
+      padding: .2em;
+
+    }
+    td{
+      display:table-cell;
+      vertical-align: top;
+    }
+  </style>
+  <body>
+    <div class = "" id="dvHead">
+      <h1>Ride for Coins </h1>
+    </div>
+    <div><h2>Standings at <span id="spLatest"></span></h2></div>
+    <div class="" id="dvBody">
+        <table border=1>
+            <tbody id="tbBody" class="tbBody"></tbody>
+        </table>
+    </div>
+  </body>
+  <script>
+    const tbBody = document.getElementById("tbBody");
+    const spLatest = document.getElementById("spLatest");
+    async function init(){
+      //const uri = "coindata.json";
+        const uri = "https://sj-sam.de/apps/ride4coins/api.php";
+        const res = await fetch(uri);
+        const json = await res.json();
+        console.log(json);
+        const latest = new Date(Math.max(...json.map(e => new Date(e.timestamp)))).toLocaleString();
+        spLatest.innerHTML= latest;
+        json.forEach(el => {
+          const coinscount = parseInt(el.coins);
+          console.log(coinscount);
+          const tr = document.createElement('tr');
+          const td = document.createElement('td');
+          // sp.innerHTML = `<img src= assets/coin-36-trans.png>`
+          for(let i=1; i <= coinscount; i++){
+            td.innerHTML += `<img src= assets/coin-48-trans.png>`; 
+          }
+          tr.innerHTML=`<td class= 'name'>${el.name}</td>`;
+          tr.appendChild(td);
+          tbBody.appendChild(tr);
+        });
+        return json;
+    }
+    init();
+  </script>
+</html>
